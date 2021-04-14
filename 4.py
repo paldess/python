@@ -1,7 +1,6 @@
 string = input('Введите строку: \n')
-#print(list(enumerate(string.split(' '))))
 
 string = string.split()
-for i, el in enumerate(string):
+for i, el in enumerate(string, 1):
     print(f'{i} - {el[:10]}')
 
