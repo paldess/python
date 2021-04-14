@@ -24,7 +24,7 @@ while True:
         tovar.append(osnov)
         tovar_tupl = tuple(tovar)
         print(tovar_tupl)
-        struktura.append(tovar)
+        struktura.append(tovar_tupl)
 
     elif act == '2':
         for i in struktura:
