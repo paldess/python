@@ -2,8 +2,8 @@ from itertools import cycle, count
 
 def first(ot, do):
     out = []
-    for close, i in enumerate(count(ot), ot+1):
-        if close >= do:
+    for close, i in enumerate(count(ot), ot):
+        if close > do:
             return out
         out.append(i)
 
