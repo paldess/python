@@ -5,9 +5,10 @@ while True:
                    '1-создание файла\n'
                    '2-удаление\n'
                    '3-дописать в файл\n'
-                   '4-выход\n')
+                   '4-вывести кол-во строк и слов\n'
+                   'q-выход\n')
     print('*' * 30)
-    if deistv == '4':                                                   # выход
+    if deistv == 'q':                                                   # выход
         exit()
     elif deistv == '1':                                                 # создание
         name = input('Введите название файла: ')
@@ -27,7 +28,10 @@ while True:
         for i in listdir(path='.'):
             print(i)
         print('*'*30)
-        name_del = input('Какой файл вы хотите удалить?(без расширения txt): ')
+        name_del = input('Какой файл вы хотите удалить?(без расширения txt): \n'
+                         '*для отмены - q\n')
+        if name_del == 'q':
+            continue
         remove(f'{name_del}.txt')
         print(f'Файл {name_del}.txt удален')
     elif deistv == '3':                                                              # дозапись
@@ -38,5 +42,16 @@ while True:
             exit()
         with open(f'{name}.txt', 'a') as txt:
             txt.write(text_ + '\n')
+    elif deistv == '4':
+        for i in listdir(path='.'):
+            print(i)
+        file = input('Выберите файл(без разрешения .тхт):  ')
+        with open(f'{file}.txt', 'r') as txt:
+            txt = txt.read()
+        txt = txt.split('\n')
+        print(f'В файле {file}.txt - {len(txt)} строк')
+        for i , j in enumerate(txt, 1):
+            j = j.split()
+            print(f'В {i} строке - {len(j)} слов\n')
     else:
         print('Некорректный выбор')
