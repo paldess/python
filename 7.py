@@ -1,4 +1,6 @@
-with open('zadacha-7.txt') as tt:
+import json
+
+with open('zadacha-7.txt', encoding="utf-8") as tt:
     text = tt.read().split('\n')
 slovar_pr = {}
 slovar_ub = {}
@@ -18,3 +20,5 @@ sr_zn /= len(slovar_pr)
 
 itog_slovar = {'С прибылью': slovar_pr, 'С убытками': slovar_ub, 'Средняя прибыль': sr_zn}
 print(itog_slovar)
+with open('zadacha-7(dump).txt', 'w', encoding="utf-8") as tt:
+    json.dump(itog_slovar, tt, ensure_ascii=False)
