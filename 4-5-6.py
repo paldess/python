@@ -1,19 +1,32 @@
 
 class Sklad():
     volume_sklad = 5
-    list_sklada = []
+    list_sklada = {a: 0 for a in range(1, (volume_sklad+1))}
+
+    def __init__(self):
+        x = 0
+        for i in range(1, self.volume_sklad+1):
+            if self.list_sklada[i] == 0:
+                x += 1
+
+    
 
     def __str__(self):
+        x = 0
+        for i in self.list_sklada.keys():
+            if not self.list_sklada[i] == 0:
+                x += 1
         for i in self.list_sklada:
-            print(i.clas, i.name, end=', ')
-        return ''
+            print(self.list_sklada[i], end=', ')
+        return  f'склад заполнен на {x}/{self.volume_sklad}'
 
     def add_in_to_sklad(self, tehn):
-        if len(self.list_sklada) >= self.volume_sklad:
-            print('склад заполнен')
-        else:
-            self.list_sklada.append(tehn)
-            print(f'{tehn.clas} {tehn.name} добавлена на склад')
+        for i in self.list_sklada.keys():
+            if self.list_sklada[i] == 0:
+                self.list_sklada[i] = tehn
+                break
+
+        print(f'{tehn.clas} {tehn.name} добавлена на склад')
 
     def dell_to_sklad(self, tehn):
         for i in range(len(self.list_sklada)):
